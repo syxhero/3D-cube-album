@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cube Album</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scene">
+        <div class="cube" id="cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+    </div>
+    <audio id="background-music" src="1.mp3" preload="auto"></audio>
+    <div class="petal-container">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+    <div class="welcome-popup" id="welcome-popup">
+      <div class="popup-content">
+          <h1>祝我的好朋友小银子七夕快乐,
+              朋友以上恋人未满,
+              做的有点简单
+              希望你能开心！
+                                --小熊
+                                --2024.8.10                  
+          </h1>
+          <button id="close-popup">Close</button>
+      </div>
+    <div id="lyrics" class="lyrics"></div>
+    <script src="script.js"></script>
+</body>
+</html>

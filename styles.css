@@ -1,0 +1,178 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('starry-sky2.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.scene {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer; /* 添加手形光标 */
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 5s infinite linear;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+}
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-size: cover; /* 确保图片覆盖整个面 */
+  background-position: center; /* 图片居中 */
+  background-repeat: no-repeat; /* 不重复图片 */
+  border: none; /* 去掉边框 */
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px); /* 添加背景模糊效果 */
+}
+.welcome-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 确保弹窗在最上层 */
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.popup-content h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+#close-popup {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-popup:hover {
+  background-color: #0056b3;
+}
+
+.front  { transform: rotateY(  0deg) translateZ(100px); background-image: url('images/1.jpg'); }
+.back   { transform: rotateY(180deg) translateZ(100px); background-image: url('images/2.jpg'); }
+.left   { transform: rotateY(-90deg) translateZ(100px); background-image: url('images/3.jpg'); }
+.right  { transform: rotateY( 90deg) translateZ(100px); background-image: url('images/4.jpg'); }
+.top    { transform: rotateX( 90deg) translateZ(100px); background-image: url('images/5.jpg'); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); background-image: url('images/6.jpg'); }
+
+.cube.expanded {
+  animation: none;
+}
+
+.cube.expanded .front  { transform: rotateY(0deg) translateX(300px) scale(0.5); }
+.cube.expanded .back   { transform: rotateY(0deg) translateX(-300px) scale(0.5); }
+.cube.expanded .left   { transform: rotateY(0deg) translateY(300px) scale(0.5); }
+.cube.expanded .right  { transform: rotateY(0deg) translateY(-300px) scale(0.5); }
+.cube.expanded .top    { transform: rotateY(0deg) translateZ(300px) scale(0.5); }
+.cube.expanded .bottom { transform: rotateY(0deg) translateZ(-300px) scale(0.5); }
+
+@keyframes rotate {
+  0% {
+      transform: rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+      transform: rotateX(0deg) rotateY(180deg);
+      animation-timing-function: ease-out; /* 减速到中途 */
+  }
+  50.1% {
+      transform: rotateX(0deg) rotateY(180deg);
+      animation-timing-function: ease-in; /* 加速从中途 */
+  }
+  100% {
+      transform: rotateX(0deg) rotateY(360deg);
+  }
+}
+
+.petal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 不干扰其他元素的点击 */
+}
+
+.petal {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0;
+  pointer-events: none; /* 不干扰其他元素的点击 */
+}
+
+@keyframes heart-petal {
+  0% {
+    transform: translateY(-100px) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.petal:nth-child(1) { animation: heart-petal 5s infinite; animation-delay: 0s; }
+.petal:nth-child(2) { animation: heart-petal 5s infinite; animation-delay: 1s; }
+.petal:nth-child(3) { animation: heart-petal 5s infinite; animation-delay: 2s; }
+.petal:nth-child(4) { animation: heart-petal 5s infinite; animation-delay: 3s; }
+.petal:nth-child(5) { animation: heart-petal 5s infinite; animation-delay: 4s; }
+
+.lyrics {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.lyrics p {
+  margin: 0;
+  padding: 5px 0;
+}
+.scene {
+  flex: 1; /* 使场景区域占满剩余空间 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
